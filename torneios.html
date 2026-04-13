@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneios - Rivalidade Gamer</title>
+    <style>
+        :root {
+            --primary: #00f2ff; /* Neon Blue */
+            --secondary: #7000ff; /* Purple */
+            --bg-dark: #0a0a0c;
+            --card-bg: #16161a;
+            --text: #ffffff;
+            --success: #39ff14; /* Neon Green */
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Reutilizando o padrão do Header */
+        header {
+            background: linear-gradient(135deg, #1a0033, var(--bg-dark));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--secondary);
+            margin: 0;
+        }
+
+        nav {
+            background: #111;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #222;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Filtros/Categorias */
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* Grid de Torneios */
+        .tournament-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .tournament-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .tournament-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .tournament-img {
+            width: 100%;
+            height: 180px;
+            background: #222; /* Placeholder para imagem do jogo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #444;
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--success);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .tournament-content {
+            padding: 20px;
+        }
+
+        .tournament-content h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .price {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .btn-join {
+            width: 100%;
+            background: linear-gradient(90deg, var(--secondary), #9d4eff);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-join:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 5px 15px rgba(112, 0, 255, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: #555;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">HOME</a>
+    <a href="torneios.html" style="color: var(--primary);">TORNEIOS</a>
+    <a target="_blank" href="https://rivalidadegamer.blogspot.com">BLOG</a>
+    <a href="login.php" style="background: var(--primary); color: #000; padding: 5px 15px; border-radius: 5px; font-size: 12px; text-decoration: none; font-weight: bold;">LOGIN</a>
+</nav>
+
+<header>
+    <h1 class="page-title">Torneios Ativos</h1>
+    <p>Escolha seu jogo, entre na fila e prove seu valor.</p>
+</header>
+
+<div class="container">
+    
+    <div class="filter-bar">
+        <button class="filter-btn active">Todos</button>
+        <button class="filter-btn">FPS</button>
+        <button class="filter-btn">MOBA</button>
+        <button class="filter-btn">Esportes</button>
+    </div>
+
+    <div class="tournament-grid">
+        
+        <div class="tournament-card">
+            <div class="tournament-img" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/400x200'); background-size: cover;">
+                FREE FIRE X1
+                <span class="badge">INSCRIÇÕES ABERTAS</span>
+            </div>
+            <div class="tournament-content">
+                <h3>Copa Elite Mobile</h3>
+                <div class="info-row">
+                    <span>Data: 20 Out - 19:00</span>
+                    <span class="price">R$ 50,00</span>
+                </div>
+                <div class="info-row">
+                    <span>Vagas: 12/32</span>
+                    <span>Modo: Solo X1</span>
+                </div>
+                <button class="btn-join" onclick="location.href='detalhes.php?id=1'">Participar</button>
+            </div>
+        </div>
+
+        <div class="tournament-card">
+            <div class="tournament-img" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/400x200'); background-size: cover;">
+                LEAGUE OF LEGENDS
+                <span class="badge" style="background: var(--primary);">EM BREVE</span>
+            </div>
+            <div class="tournament-content">
+                <h3>King of Mid Lane</h3>
+                <div class="info-row">
+                    <span>Data: 22 Out - 20:00</span>
+                    <span class="price">R$ 100,00</span>
+                </div>
+                <div class="info-row">
+                    <span>Vagas: 0/16</span>
+                    <span>Modo: Draft Mode</span>
+                </div>
+                <button class="btn-join" style="background: #333; cursor: not-allowed;">Aguardando</button>
+            </div>
+        </div>
+
+        <div class="tournament-card">
+            <div class="tournament-img" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/400x200'); background-size: cover;">
+                FC 26 (FIFA)
+                <span class="badge">INSCRIÇÕES ABERTAS</span>
+            </div>
+            <div class="tournament-content">
+                <h3>Masters do Gramado</h3>
+                <div class="info-row">
+                    <span>Data: 25 Out - 15:00</span>
+                    <span class="price">Grátis</span>
+                </div>
+                <div class="info-row">
+                    <span>Vagas: 28/64</span>
+                    <span>Modo: Eliminatória</span>
+                </div>
+                <button class="btn-join" onclick="location.href='detalhes.php?id=3'">Participar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Rivalidade Gamer - Onde as lendas se encontram.
+</footer>
+
+</body>
+</html>
